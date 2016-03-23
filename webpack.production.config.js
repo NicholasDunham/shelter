@@ -3,27 +3,32 @@
 const webpack           = require('webpack');
 const path              = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client?reload=true',
     path.join(__dirname, 'src/main.js')
   ],
   output: {
     path: path.join(__dirname, 'public/'),
-    filename: '[name]_wp_bundle.js',
+    filename: '[name]-[hash].min.js',
     publicPath: '/'
   },
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.tpl.html',
       inject: 'body',
       filename: 'index.html'
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new ExtractTextPlugin('[name]-[hash].min.css'),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false,
+        screw_ie8: true
+      }
+    })
   ],
   module: {
     loaders: [
@@ -40,8 +45,6 @@ module.exports = {
         loader: 'style-loader!css-loader',
       }
     ],
-  },
-  devtool: '#eval-source-map',
-  stats: { colors: true }
-};
+  }
+}
 
