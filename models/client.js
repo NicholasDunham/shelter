@@ -10,3 +10,5 @@ const Client = mongoose.model('Client', {
   spam: Boolean,
   photo: String
 })
+
+module.exports = Client;
