@@ -10,7 +10,8 @@ const Animal = mongoose.model('Animal', {
   breed: String,
   age: Number,
   pounds: Number,
-  price: Number
+  price: Number,
+  photo: String
 });
 
 module.exports = Animal;
