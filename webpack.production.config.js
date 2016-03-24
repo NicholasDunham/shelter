@@ -1,9 +1,10 @@
 'use strict';
 
-const webpack           = require('webpack');
-const path              = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack            = require('webpack');
+const path               = require('path');
+const HtmlWebpackPlugin  = require('html-webpack-plugin');
+const ExtractTextPlugin  = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -15,12 +16,12 @@ module.exports = {
     publicPath: '/'
   },
   plugins: [
+    new CleanWebpackPlugin(['public']),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
       template: 'src/index.tpl.html',
-      inject: 'body',
-      filename: 'index.html'
+      inject: 'body'
     }),
     new ExtractTextPlugin('[name]-[hash].min.css'),
     new webpack.optimize.UglifyJsPlugin({
