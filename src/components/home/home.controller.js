@@ -1,8 +1,11 @@
 'use strict';
 
 class HomeController {
-  constructor() {
+  constructor(AnimalFactory) {
     this.name = 'Home';
+    let animals = AnimalFactory.query(function() {
+      console.log(animals);
+    });
   }
 }
 
