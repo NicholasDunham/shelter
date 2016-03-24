@@ -32,6 +32,10 @@ module.exports = {
         loaders: ['ng-annotate', 'babel-loader']
       },
       {
+        test: /\.html$/,
+        loader: 'raw'
+      },
+      {
         test: /\.css$/,
         loader: 'style-loader!css-loader'
       }
