@@ -1,5 +1,5 @@
 const AnimalFactory = function($resource) {
-  return $resource('/animals/:animalId');
+  return $resource('/animals');
 };
 
 export default AnimalFactory;

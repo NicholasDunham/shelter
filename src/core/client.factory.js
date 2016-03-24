@@ -1,6 +1,5 @@
 const ClientFactory = function($resource) {
-  return $resource('/clients/:clientId');
+  return $resource('/clients');
 };
 
 export default ClientFactory;
-

@@ -14,10 +14,10 @@ const homeModule = angular.module('home', [ uiRouter ])
     $stateProvider
       .state('home', {
         url: '/',
-        template: '<home></home>'
+        template: '<home></home>',
       });
   })
 
-    .component('home', homeComponent);
+  .component('home', homeComponent);
 
 export default homeModule;

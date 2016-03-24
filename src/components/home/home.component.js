@@ -5,7 +5,10 @@ import controller from './home.controller';
 
 const homeComponent = {
   restrict: 'E',
-  bindings: {},
+  bindings: {
+    animals: '@',
+    clients: '@'
+  },
   template,
   controller,
   controllerAs: 'vm'
