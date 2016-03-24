@@ -30,14 +30,11 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015'],
-        },
+        loaders: ['ng-annotate', 'babel-loader']
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader',
+        loader: 'style-loader!css-loader'
       }
     ],
   },
